@@ -15,3 +15,8 @@ df=pd.read_csv('D:\\fakenewsdetection\\news.csv')
 #Get shape and head
 df.shape
 df.head()
+
+
+#DataFlair - Get the labels
+labels=df.label
+labels.head()
