@@ -42,6 +42,13 @@
 						<input type="submit" name="submit" value="submit" class="btn btn-primary">
 					</div>
 				</div>
+				<div class="results">
+					{% if prediction == 1%}
+						<h2 style="color:red;">Fake⚠️</h2>
+					{% elif prediction == 0%}
+						<h2 style="color:green;"><b>Not a Fake💚</b></h2>
+					{% endif %}
+	</div>
 			</form>
 		</div>
 
