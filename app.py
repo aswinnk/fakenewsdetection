@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import PassiveAggressiveClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix
-from flask import Flask,redirect,render_template
+from flask import Flask,redirect,render_template,request
 
 app = Flask(__name__)
 
@@ -43,12 +43,20 @@ def fakedetection():
     #DataFlair - Predict on the test set and calculate accuracy
     y_pred=pac.predict(tfidf_test)
     score=accuracy_score(y_test,y_pred)
+    confusion_matrix(y_test,y_pred, labels=['FAKE','REAL'])
     print(f'Accuracy: {round(score*100,2)}%')
+    if request.method == "POST":
+        message=request.form['message']
+        data=[message]
+        vect=tfidf_vectorizer.transform(data).toarray()
+        my_prediction=pac.predict(vect)
+    print(my_prediction)
+        
 
     #DataFlair - Build confusion matrix
-    confusion_matrix(y_test,y_pred, labels=['FAKE','REAL'])
+    
     print(confusion_matrix)
-    return render_template("index.html")
+    return render_template("index.html",prediction=my_prediction)
 
 if __name__ == '__main__':
     app.run(debug=True) 
