@@ -47,6 +47,7 @@ def fakedetection():
 
     #DataFlair - Build confusion matrix
     confusion_matrix(y_test,y_pred, labels=['FAKE','REAL'])
+    print(confusion_matrix)
     return render_template("index.html")
 
 if __name__ == '__main__':
