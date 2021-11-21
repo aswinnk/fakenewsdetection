@@ -16,7 +16,7 @@ def home():
 @app.route('/fakedetection',methods=['POST'])
 def fakedetection():
     #Read the data
-    print("delna")
+    
     df=pd.read_csv('D:\\fakenewsdetection\\news.csv')
 
     #Get shape and head
