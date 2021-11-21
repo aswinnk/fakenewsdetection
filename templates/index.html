@@ -28,7 +28,7 @@
 
 	<div class="container-contact100" style="background-image: url('/static/images/bg-01.jpg');">
 		<div class="wrap-contact100">
-			<form action="/fakedetection" method=["POST"] class="contact100-form validate-form">
+			<form action="/fakedetection" method="post" class="contact100-form validate-form">
 
 
 				<div class="wrap-input100 validate-input" data-validate = "Message is required">
@@ -43,9 +43,9 @@
 					</div>
 				</div>
 				<div class="results">
-					{% if prediction == 1%}
+					{% if prediction == FAKE%}
 						<h2 style="color:red;">Fake⚠️</h2>
-					{% elif prediction == 0%}
+					{% elif prediction == REAL%}
 						<h2 style="color:green;"><b>Not a Fake💚</b></h2>
 					{% endif %}
 	</div>

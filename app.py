@@ -16,6 +16,7 @@ def home():
 @app.route('/fakedetection',methods=['POST'])
 def fakedetection():
     #Read the data
+    print("delna")
     df=pd.read_csv('D:\\fakenewsdetection\\news.csv')
 
     #Get shape and head
@@ -44,13 +45,13 @@ def fakedetection():
     y_pred=pac.predict(tfidf_test)
     score=accuracy_score(y_test,y_pred)
     confusion_matrix(y_test,y_pred, labels=['FAKE','REAL'])
-    print(f'Accuracy: {round(score*100,2)}%')
+    # print(f'Accuracy: {round(score*100,2)}%')
     if request.method == "POST":
         message=request.form['message']
         data=[message]
         vect=tfidf_vectorizer.transform(data).toarray()
         my_prediction=pac.predict(vect)
-    print(my_prediction)
+    print("this",my_prediction)
         
 
     #DataFlair - Build confusion matrix
